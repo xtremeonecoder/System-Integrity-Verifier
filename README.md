@@ -12,7 +12,7 @@ If any _**RecursivelyWalkedRecord**_ (like - directory / file) of the monitored 
 
 _if **RecursivelyWalkedRecord** not in **VerificationFileRecord**:_
 
-_report.write(“Warning: File/Directory has been added!”)_
+```report.write(“Warning: File/Directory has been added!”)```
 
 ![Check directory or file addition](https://github.com/xtremeonecoder/system-integrity-verifier/blob/master/documentation/Check-directory-or-file-addition.jpg "Check directory or file addition")
 
@@ -21,7 +21,7 @@ If any _**VerificationFileRecord**_ (like - directory / file) fails to certify t
 
 _if **VerificationFileRecord** is not **ValidRecord**:_
 
-_report.write(“Warning: File/Directory has been removed!”)_
+```report.write(“Warning: File/Directory has been removed!”)```
 
 ![Check directory removal](https://github.com/xtremeonecoder/system-integrity-verifier/blob/master/documentation/Check-directory-removal.jpg "Check directory removal")
 
@@ -32,7 +32,7 @@ If _**RecursivelyWalkedRecord**_’s _**CurrentSize**_ does not match with _**Ve
 
 _if **CurrentSize** not equal to **SavedSize**:_
 
-_report.write(“Warning: File/Directory has a different size than recorded!”)_
+```report.write(“Warning: File/Directory has a different size than recorded!”)```
 
 ![Check difference in file size](https://github.com/xtremeonecoder/system-integrity-verifier/blob/master/documentation/Check-difference-in-file-size.jpg "Check difference in file size")
 
@@ -41,7 +41,7 @@ If _**RecursivelyWalkedRecord**_’s _**CurrentMessageDigest**_ does not match w
 
 _if **CurrentMessageDigest** not equal to  **SavedMessageDigest**:_
 
-_report.write(“Warning: File with a different message digest!”)_
+```report.write(“Warning: File with a different message digest!”)```
  
 ![Check difference in message digest](https://github.com/xtremeonecoder/system-integrity-verifier/blob/master/documentation/Check-difference-in-message-digest.jpg "Check difference in message digest")
 
@@ -50,7 +50,7 @@ If _**RecursivelyWalkedRecord**_’s _**CurrentUser/Group**_ does not match with
 
 _if **CurrentUser/Group** not equal to **SavedUser/Group**:_
 
-_report.write(“Warning: Files/directories with a different user/group!”)_
+```report.write(“Warning: Files/directories with a different user/group!”)```
 
 ![Check difference in user](https://github.com/xtremeonecoder/system-integrity-verifier/blob/master/documentation/Check-difference-in-user.jpg "Check difference in user") 
 
@@ -61,7 +61,7 @@ If _**RecursivelyWalkedRecord**_’s _**CurrentAccessPermission**_ does not matc
 
 _if **CurrentAccessPermission** not equal to **SavedAccessPermission**:_
 
-_report.write(“Warning: Files/directories with modified access right!”)_
+```report.write(“Warning: Files/directories with modified access right!”)```
 
 ![Check difference in access right](https://github.com/xtremeonecoder/system-integrity-verifier/blob/master/documentation/Check-difference-in-access-right.jpg "Check difference in access right") 
 
@@ -70,7 +70,7 @@ If _**RecursivelyWalkedRecord**_’s _**CurrentModificationDate**_ does not matc
 
 _if **CurrentModificationDate** does not match with **SavedModificationDate**:_
 
-_report.write(“Warning: Files/directories with a different modification date!”)_
+```report.write(“Warning: Files/directories with a different modification date!”)```
 
 ![Check difference in modification date](https://github.com/xtremeonecoder/system-integrity-verifier/blob/master/documentation/Check-difference-in-modification-date.jpg "Check difference in modification date")
 
