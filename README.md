@@ -10,16 +10,18 @@ This simple _System Integrity Verifier (SIV)_ has been developed in _Python_. It
 #### 2.1.1.1   File/Directory Added
 If any _**RecursivelyWalkedRecord**_ (like - directory / file) of the monitored directory is not found in the _**VerificationFileRecord**_, then the record is assumed to be added newly.
 
-```_if **RecursivelyWalkedRecord** not in **VerificationFileRecord**:_```
-```_report.write(“Warning: File/Directory has been added!”)_```
+_if **RecursivelyWalkedRecord** not in **VerificationFileRecord**:_
+
+_report.write(“Warning: File/Directory has been added!”)_
 
 ![Check directory or file addition](https://github.com/xtremeonecoder/system-integrity-verifier/blob/master/documentation/Check-directory-or-file-addition.jpg "Check directory or file addition")
 
 #### 2.1.1.2   File/Directory Removed
 If any _**VerificationFileRecord**_ (like - directory / file) fails to certify that it is a valid directory / file, then the record is assumed to be removed.
 
-```_if VerificationFileRecord is not ValidRecord:_```
-```report.write(“Warning: File/Directory has been removed!”)```
+_if **VerificationFileRecord** is not **ValidRecord**:_
+
+_report.write(“Warning: File/Directory has been removed!”)_
 
 ![Check directory removal](https://github.com/xtremeonecoder/system-integrity-verifier/blob/master/documentation/Check-directory-removal.jpg "Check directory removal")
 
@@ -28,24 +30,27 @@ If any _**VerificationFileRecord**_ (like - directory / file) fails to certify t
 #### 2.1.2   Files with a different size than recorded
 If _**RecursivelyWalkedRecord**_’s _**CurrentSize**_ does not match with _**VerificationFileRecord**_’s _**SavedSize**_, then the record is assumed to be a different size than recorded before.
 
-```if CurrentSize not equal to SavedSize:```
-```report.write(“Warning: File/Directory has a different size than recorded!”)```
+_if **CurrentSize** not equal to **SavedSize**:_
+
+_report.write(“Warning: File/Directory has a different size than recorded!”)_
 
 ![Check difference in file size](https://github.com/xtremeonecoder/system-integrity-verifier/blob/master/documentation/Check-difference-in-file-size.jpg "Check difference in file size")
 
 #### 2.1.3   Files with a different message digest than computed before
 If _**RecursivelyWalkedRecord**_’s _**CurrentMessageDigest**_ does not match with _**VerificationFileRecord**_’s _**SavedMessageDigest**_, then the record is assumed to be a different message digest than computed before.
 
-```if CurrentMessageDigest not equal to  SavedMessageDigest:```
-```report.write(“Warning: File with a different message digest!”)```
+_if **CurrentMessageDigest** not equal to  **SavedMessageDigest**:_
+
+_report.write(“Warning: File with a different message digest!”)_
  
 ![Check difference in message digest](https://github.com/xtremeonecoder/system-integrity-verifier/blob/master/documentation/Check-difference-in-message-digest.jpg "Check difference in message digest")
 
 #### 2.1.4   Files/directories with a different user/group
 If _**RecursivelyWalkedRecord**_’s _**CurrentUser/Group**_ does not match with _**VerificationFileRecord**_’s _**SavedUser/Group**_, then the record is assumed to be with a different user/group.
 
-```if CurrentUser/Group not equal to  SavedUser/Group:```
-```report.write(“Warning: Files/directories with a different user/group!”)```
+_if **CurrentUser/Group** not equal to **SavedUser/Group**:_
+
+_report.write(“Warning: Files/directories with a different user/group!”)_
 
 ![Check difference in user](https://github.com/xtremeonecoder/system-integrity-verifier/blob/master/documentation/Check-difference-in-user.jpg "Check difference in user") 
 
@@ -54,16 +59,18 @@ If _**RecursivelyWalkedRecord**_’s _**CurrentUser/Group**_ does not match with
 #### 2.1.5   Files/directories with modified access right
 If _**RecursivelyWalkedRecord**_’s _**CurrentAccessPermission**_ does not match with _**VerificationFileRecord**_’s _**SavedAccessPermission**_, then the record is assumed to be with modified access right.
 
-```if CurrentAccessPermission not equal to  SavedAccessPermission:```
-```report.write(“Warning: Files/directories with modified access right!”)```
+_if **CurrentAccessPermission** not equal to **SavedAccessPermission**:_
+
+_report.write(“Warning: Files/directories with modified access right!”)_
 
 ![Check difference in access right](https://github.com/xtremeonecoder/system-integrity-verifier/blob/master/documentation/Check-difference-in-access-right.jpg "Check difference in access right") 
 
 #### 2.1.6   Files/directories with a different modification date
 If _**RecursivelyWalkedRecord**_’s _**CurrentModificationDate**_ does not match with _**VerificationFileRecord**_’s _**SavedModificationDate**_, then the record is assumed to be with a different modification date.
 
-```if CurrentModificationDate does not match with SavedModificationDate:```
-```report.write(“Warning: Files/directories with a different modification date!”)```
+_if **CurrentModificationDate** does not match with **SavedModificationDate**:_
+
+_report.write(“Warning: Files/directories with a different modification date!”)_
 
 ![Check difference in modification date](https://github.com/xtremeonecoder/system-integrity-verifier/blob/master/documentation/Check-difference-in-modification-date.jpg "Check difference in modification date")
 
@@ -108,7 +115,9 @@ For computing the hashing message digest, I developed a comprehensive function, 
 In the verification file, I’m storing all the data as _JSON (JavaScript Object Notation)_ format. Because _JSON_ is a one of the most feasible and convenient data formats, which is very easily readable and clearly understandable by human. Alongside, it is easy to handle and manipulate _JSON_ data compare to other data format. In my verification file, I stored data in three segments. 
 
 _In first segment, I stored all the details of the directories and subdirectories._
+
 _In second segment, I stored all the details of the files._
+
 _In third segment, I stored hash function information._
 
 The key of the directory and file information is the full-path of directory and file itself as mentioned in the structure. _JSON_ file structure is given below - 
@@ -139,21 +148,37 @@ Usually _Python_ comes by default with the _Ubuntu_ installation. With _**Ubuntu
 
 ## Optional Arguments
 -h, --help            show this help message and exit
+
 -i, --initialization  Initialization mode
+
 -v, --verification    Verification mode
+
 -D MONITORED_DIRECTORY, --monitored_directory MONITORED_DIRECTORY
+
 Provide a directory for monitoring integrity
+
 -V VERIFICATION_FILE, --verification_file VERIFICATION_FILE
+
 Provide a verification file for storing records of each directory and file of the monitored directory
+
 -R REPORT_FILE, --report_file REPORT_FILE
+
 Provide a report file for saving final report along with warnings
+
 -H HASH_FUNCTION, --hash_function HASH_FUNCTION
+
 Hash algorithm supported: 'sha1' and 'md5'
 
 ## Sample Commands
-Initialization   	      : _./siv.py -i -D /etc/ -V verification.json -R_ report.txt -H md5
-Verification     	      : _./siv.py -v -D /etc/ -V verification.json -R_ report.txt
-SIV Help Manual           : _./siv.py -h_
+Initialization   	      : ```./siv.py -i -D /etc/ -V verification.json -R``` 
+
+report.txt -H md5
+
+Verification     	      : ```./siv.py -v -D /etc/ -V verification.json -R```
+
+report.txt
+
+SIV Help Manual           : ```./siv.py -h```
  
 ![System Integrity Verifier (SIV) Usages](https://github.com/xtremeonecoder/system-integrity-verifier/blob/master/documentation/System-Integrity-Verifier-Usages.jpg "System Integrity Verifier (SIV) Usages")
 
